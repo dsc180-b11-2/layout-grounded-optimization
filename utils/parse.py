@@ -70,7 +70,7 @@ def parse_input_with_negative(text=None, no_input=False):
         if no_input:
             raise user_error(f"No input parsed in \"{text}\".")
         
-        text = input("Enter the response: ")
+        text = input("Enter the response: ") # this is where the input is
     if objects_text in text:
         text = text.split(objects_text)[1]
         
@@ -84,7 +84,7 @@ def parse_input_with_negative(text=None, no_input=False):
         text_rem = ""
         while not text_rem:
             # Ignore the empty lines in the response
-            text_rem = input("Enter the background prompt: ").strip()
+            text_rem = input("Enter the background prompt: ").strip() # stripped / is storing the tuples. input message after the input?
         if bg_prompt_text_no_trailing_space in text_rem:
             text_rem = text_rem.split(bg_prompt_text_no_trailing_space)[1]
     else:

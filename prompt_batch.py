@@ -33,7 +33,7 @@ if __name__ == "__main__":
     
     model, llm_kwargs = get_llm_kwargs(
         model=args.model, template_version=template_version)
-    template = llm_kwargs.template
+    template = llm_kwargs.template #intelligent bounding box generator
 
     # This is for visualizing bounding boxes
     parse.img_dir = f"img_generations/imgs_{args.prompt_type}_template{template_version}"
@@ -47,9 +47,10 @@ if __name__ == "__main__":
 
     cache.init_cache()
 
+    # This is where we start processing the prompt
     prompts_query = get_prompts(args.prompt_type, model=model)
     
-    for ind, prompt in enumerate(prompts_query):
+    for ind, prompt in enumerate(prompts_query): # in all of the given prompts (pure text)
         if isinstance(prompt, list):
             # prompt, seed
             prompt = prompt[0]
@@ -59,10 +60,10 @@ if __name__ == "__main__":
         if response is None:
             print(f"Cache miss: {prompt}")
             
-            if not args.auto_query:
+            if not args.auto_query: # gpt4 prompt
                 print("#########")
-                prompt_full = get_full_prompt(template=template, prompt=prompt)
-                print(prompt_full, end="")
+                prompt_full = get_full_prompt(template=template, prompt=prompt) #chatgpt prompt
+                print(prompt_full, end="") 
                 print("#########")
                 resp = None
             
@@ -77,7 +78,7 @@ if __name__ == "__main__":
                     parsed_input = parse_input_with_negative(text=resp, no_input=args.auto_query)
                     if parsed_input is None:
                         raise ValueError("Invalid input")
-                    raw_gen_boxes, bg_prompt, neg_prompt = parsed_input
+                    raw_gen_boxes, bg_prompt, neg_prompt = parsed_input # takes in raw_gen_boxes
                 except (ValueError, SyntaxError, TypeError) as e:
                     if attempts > 3:
                         print("Retrying too many times, skipping")
@@ -86,6 +87,7 @@ if __name__ == "__main__":
                     time.sleep(10)
                     continue
                 
+                #*
                 gen_boxes = [{'name': box[0], 'bounding_box': box[1]} for box in raw_gen_boxes]
                 gen_boxes = filter_boxes(gen_boxes, scale_boxes=scale_boxes)
                 if not args.no_visualize:
