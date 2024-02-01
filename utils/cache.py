@@ -38,6 +38,8 @@ def init_cache(allow_nonexist=True):
         elif cache_format == "json":
             with open(cache_path, 'r') as f:
                 global_cache = json.load(f)
+    # with open('data.json', 'r') as f:
+        # global_cache = json.load(f)
 
 def get_cache(key):
     if key not in global_cache:

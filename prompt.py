@@ -52,7 +52,7 @@ stop = "\n\n"
 prompts_demo_gpt4, prompts_demo_gpt3_5 = [], []
 
 # Put what we want to generate when you query GPT-4 for demo here
-prompts_demo_gpt4 = [] #"A hundred cat faces", # get text
+prompts_demo_gpt4 = ["A cat on the left and a dog on the right",] #"A hundred cat faces", # get text
 
 # Put what we want to generate when you query GPT-3.5 for demo here
 prompts_demo_gpt3_5 = ["A hundred cat faces",]

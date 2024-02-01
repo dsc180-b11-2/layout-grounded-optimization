@@ -1,0 +1,18 @@
+[
+    {
+        "label": "dog",
+        "startX": 55,
+        "startY": 183,
+        "endX": 175,
+        "endY": 376,
+        "color": "#1A1A1A"
+    },
+    {
+        "label": "cat",
+        "startX": 278,
+        "startY": 254,
+        "endX": 486,
+        "endY": 403,
+        "color": "#E69617"
+    }
+]

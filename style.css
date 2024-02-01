@@ -1,0 +1,12 @@
+/* Basic styling; can be expanded as needed */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+canvas {
+    margin-bottom: 10px;
+}
+

@@ -1,7 +1,7 @@
 import os
 from prompt import get_prompts, prompt_types, template_versions
 from utils import parse
-from utils.parse import parse_input_with_negative, bg_prompt_text, neg_prompt_text, filter_boxes, show_boxes
+from utils.parse import parse_input_with_negative, parse_input_from_canvas, bg_prompt_text, neg_prompt_text, filter_boxes, show_boxes
 from utils.llm import get_llm_kwargs, get_full_prompt, get_layout, model_names
 from utils import cache
 import matplotlib.pyplot as plt
@@ -10,7 +10,6 @@ import time
 
 # This only applies to visualization in this file.
 scale_boxes = False
-
 if scale_boxes:
     print("Scaling the bounding box to fit the scene")
 else:
@@ -31,6 +30,8 @@ if __name__ == "__main__":
     
     template_version = args.template_version
     
+    
+    # Use ChatGPT to generate LLM prompt (unused)
     model, llm_kwargs = get_llm_kwargs(
         model=args.model, template_version=template_version)
     template = llm_kwargs.template #intelligent bounding box generator
@@ -40,6 +41,7 @@ if __name__ == "__main__":
     if not args.no_visualize:
         os.makedirs(parse.img_dir, exist_ok=True)
 
+    # create cache directory
     cache.cache_path = f'cache/cache_{args.prompt_type.replace("lmd_", "")}{"_" + template_version if args.template_version != "v5" else ""}_{model}.json'
     print(f"Cache: {cache.cache_path}")
     os.makedirs(os.path.dirname(cache.cache_path), exist_ok=True)
@@ -50,12 +52,16 @@ if __name__ == "__main__":
     # This is where we start processing the prompt
     prompts_query = get_prompts(args.prompt_type, model=model)
     
-    for ind, prompt in enumerate(prompts_query): # in all of the given prompts (pure text)
+    # in all given prompts
+    for ind, prompt in enumerate(prompts_query): 
         if isinstance(prompt, list):
             # prompt, seed
             prompt = prompt[0]
+            
+        # clean the prompt text
         prompt = prompt.strip().rstrip(".")
         
+        # check if there is existing cache of the prompt
         response = cache.get_cache(prompt)
         if response is None:
             print(f"Cache miss: {prompt}")
@@ -65,7 +71,7 @@ if __name__ == "__main__":
                 prompt_full = get_full_prompt(template=template, prompt=prompt) #chatgpt prompt
                 print(prompt_full, end="") 
                 print("#########")
-                resp = None
+                resp = None #request user input
             
             attempts = 0
             while True:
@@ -75,10 +81,13 @@ if __name__ == "__main__":
                     print("Response:", resp)
                 
                 try:
-                    parsed_input = parse_input_with_negative(text=resp, no_input=args.auto_query)
+                    parsed_input = parse_input_from_canvas('/mnt/hd1/jwsong/LLM-groundedDiffusion/canvas_input/data.json')#parse_input_with_negative(text=resp, no_input=args.auto_query)
+                    # parsed_input = parse_input_with_negative(text=resp, no_input=args.auto_query)
                     if parsed_input is None:
                         raise ValueError("Invalid input")
-                    raw_gen_boxes, bg_prompt, neg_prompt = parsed_input # takes in raw_gen_boxes
+                    
+
+                    raw_gen_boxes, bg_prompt, neg_prompt = parsed_input 
                 except (ValueError, SyntaxError, TypeError) as e:
                     if attempts > 3:
                         print("Retrying too many times, skipping")

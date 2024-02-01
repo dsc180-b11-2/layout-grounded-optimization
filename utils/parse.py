@@ -6,6 +6,7 @@ import numpy as np
 import warnings
 import inflect
 import gradio as gr
+import json
 
 p = inflect.engine()
 # user_error = ValueError
@@ -66,22 +67,32 @@ def parse_input(text=None, no_input=False):
 def parse_input_with_negative(text=None, no_input=False):
     # no_input: should not request interactive input
     
+    ### Process text input ###
+    
+    # Validate text; ask for input
     if not text:
         if no_input:
             raise user_error(f"No input parsed in \"{text}\".")
-        
         text = input("Enter the response: ") # this is where the input is
+        
+    # If prompt is in text
     if objects_text in text:
         text = text.split(objects_text)[1]
         
+    ### Process background prompt
     text_split = text.split(bg_prompt_text_no_trailing_space)
+    
+    # if we entered bkg prompt along with text prompt, then put them together
     if len(text_split) == 2:
         gen_boxes, text_rem = text_split
+        
+    # if we just have the backwar
     elif len(text_split) == 1:
         if no_input:
             raise user_error(f"Invalid input (no background prompt): {text}")
         gen_boxes = text
         text_rem = ""
+    
         while not text_rem:
             # Ignore the empty lines in the response
             text_rem = input("Enter the background prompt: ").strip() # stripped / is storing the tuples. input message after the input?
@@ -90,6 +101,7 @@ def parse_input_with_negative(text=None, no_input=False):
     else:
         raise user_error(f"Invalid input (possibly multiple background prompts): {text}")
     
+    #### negative prompt
     text_split = text_rem.split(neg_prompt_text_no_trailing_space)
     
     if len(text_split) == 2:
@@ -107,6 +119,7 @@ def parse_input_with_negative(text=None, no_input=False):
         raise user_error(f"Invalid input (possibly multiple negative prompts): {text}")
     
     try:
+        # convert string input into a list
         gen_boxes = ast.literal_eval(gen_boxes)    
     except SyntaxError as e:
         # Sometimes the response is in plain text
@@ -122,6 +135,53 @@ def parse_input_with_negative(text=None, no_input=False):
         neg_prompt = ""
     
     return gen_boxes, bg_prompt, neg_prompt
+
+def parse_input_from_canvas(fp, no_input=False):
+    ### Process canvas input ###
+    if not fp:
+        if no_input:
+            raise user_error(f"No canvas input json file in \"{fp}\".")
+        
+    with open(fp, 'r') as file:
+        data = json.load(file)
+
+    raw_gen_boxes = []
+    for item in data:
+        raw_gen_boxes.append((item['label'], [item['startX'], item['startY'], item['endX'], item['endY']]))
+       
+    ### Process background prompt
+    # instead of splitting (filtering, we go straight to asking)
+    # text_split = text.split(bg_prompt_text_no_trailing_space)
+    
+    text_rem = input("Enter the background prompt: ").strip() # stripped / is storing the tuples. input message after the input?
+    
+    #### negative prompt
+    # filter this time
+    text_split = text_rem.split(neg_prompt_text_no_trailing_space)
+    
+    if len(text_split) == 2:
+        bg_prompt, neg_prompt = text_split
+    elif len(text_split) == 1:
+        bg_prompt = text_rem
+        # Negative prompt is optional: if it's not provided, we default to empty string
+        neg_prompt = ""
+        if not no_input:
+            # Ignore the empty lines in the response
+            neg_prompt = input("Enter the negative prompt: ").strip()
+            if neg_prompt_text_no_trailing_space in neg_prompt:
+                neg_prompt = neg_prompt.split(neg_prompt_text_no_trailing_space)[1]
+    else:
+        raise user_error(f"Invalid input (possibly multiple negative prompts): {text}")
+
+    bg_prompt = bg_prompt.strip()
+    neg_prompt = neg_prompt.strip()
+    
+    # LLM may return "None" to mean no negative prompt provided.
+    if neg_prompt == "None":
+        neg_prompt = ""
+    
+    return raw_gen_boxes, bg_prompt, neg_prompt
+
 
 def filter_boxes(gen_boxes, scale_boxes=True, ignore_background=True, max_scale=3):
     if gen_boxes is None:

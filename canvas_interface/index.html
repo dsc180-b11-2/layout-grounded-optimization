@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw and Label Rectangles</title>
+    <link rel="stylesheet" href="style.css"> <!-- Optional for styling -->
+</head>
+<body>
+    <canvas id="canvas" width="512" height="512" style="border:1px solid #000;"></canvas>
+    <label for="labelInput">Label: </label>
+    <input type="text" id="labelInput">
+    <!-- Include the jscolor library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.5.2/jscolor.min.js"></script>
+
+    <!-- Create a text input element with the data-jscolor attribute -->
+    <input class="jscolor" id="colorvalue" data-jscolor="{format:'hex'}">
+
+    <button id="saveBtn">Save Rectangle</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

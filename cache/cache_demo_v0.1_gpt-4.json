@@ -1,0 +1,5 @@
+{
+    "A cat on the left and a dog on the right": [
+        "[('dog', [55, 183, 175, 376]), ('cat', [278, 254, 486, 403])]\nBackground prompt: grass\nNegative prompt: "
+    ]
+}
