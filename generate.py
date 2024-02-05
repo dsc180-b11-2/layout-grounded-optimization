@@ -14,6 +14,8 @@ from models import sam
 import argparse
 import generation.sdxl_refinement as sdxl
 
+
+# Command Line interface
 parser = argparse.ArgumentParser()
 parser.add_argument("--save-suffix", default=None, type=str)
 parser.add_argument("--model", choices=model_names, required=True, help="LLM model to load the cache from")
@@ -170,6 +172,9 @@ plt.show = plt.clf
 prompt_type = args.prompt_type
 template_version = args.template_version
 
+"""
+Load cache, generates image
+"""
 # Use cache
 model = get_full_model_name(model=args.model)
 
@@ -240,6 +245,7 @@ for regenerate_ind in range(args.regenerate):
         # For `save_as_display`:
         save_ind = 0
 
+        """prompt cache"""
         if prompt_ind < args.skip_first_prompts:
             ind += 1
             continue
@@ -267,6 +273,7 @@ for regenerate_ind in range(args.regenerate):
             print(f"Cache miss, skipping prompt: {prompt}")
             ind += 1
             continue
+        """prompt cache"""
 
         print(f"***run: {run_ind}, scale_boxes: {scale_boxes}***")
         print(f"prompt: {prompt}, resp: {resp}")

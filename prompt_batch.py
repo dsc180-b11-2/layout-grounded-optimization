@@ -41,6 +41,8 @@ if __name__ == "__main__":
     if not args.no_visualize:
         os.makedirs(parse.img_dir, exist_ok=True)
 
+
+    
     # create cache directory
     cache.cache_path = f'cache/cache_{args.prompt_type.replace("lmd_", "")}{"_" + template_version if args.template_version != "v5" else ""}_{model}.json'
     print(f"Cache: {cache.cache_path}")
@@ -49,80 +51,25 @@ if __name__ == "__main__":
 
     cache.init_cache()
 
-    # This is where we start processing the prompt
-    prompts_query = get_prompts(args.prompt_type, model=model)
+    # still get prompt
+    prompt = get_prompts(args.prompt_type, model=model)[0]
     
-    # in all given prompts
-    for ind, prompt in enumerate(prompts_query): 
-        if isinstance(prompt, list):
-            # prompt, seed
-            prompt = prompt[0]
-            
-        # clean the prompt text
-        prompt = prompt.strip().rstrip(".")
-        
-        # check if there is existing cache of the prompt
-        response = cache.get_cache(prompt)
-        if response is None:
-            print(f"Cache miss: {prompt}")
-            
-            if not args.auto_query: # gpt4 prompt
-                print("#########")
-                prompt_full = get_full_prompt(template=template, prompt=prompt) #chatgpt prompt
-                print(prompt_full, end="") 
-                print("#########")
-                resp = None #request user input
-            
-            attempts = 0
-            while True:
-                attempts += 1
-                if args.auto_query:
-                    resp = get_layout(prompt=prompt, llm_kwargs=llm_kwargs)
-                    print("Response:", resp)
+    # Read canvas input
+    parsed_input = parse_input_from_canvas('/mnt/hd1/jwsong/canvas-lmd-rt/canvas_input/data_1.json')#parse_input_with_negative(text=resp, no_input=args.auto_query)
+    # parsed_input = parse_input_with_negative(text=resp, no_input=args.auto_query)
+    if parsed_input is None:
+        raise ValueError("Invalid input")
+    raw_gen_boxes, bg_prompt, neg_prompt = parsed_input 
                 
-                try:
-                    parsed_input = parse_input_from_canvas('/mnt/hd1/jwsong/canvas-lmd-rt/canvas_input/data_1.json')#parse_input_with_negative(text=resp, no_input=args.auto_query)
-                    # parsed_input = parse_input_with_negative(text=resp, no_input=args.auto_query)
-                    if parsed_input is None:
-                        raise ValueError("Invalid input")
-                    
-
-                    raw_gen_boxes, bg_prompt, neg_prompt = parsed_input 
-                except (ValueError, SyntaxError, TypeError) as e:
-                    if attempts > 3:
-                        print("Retrying too many times, skipping")
-                        break
-                    print(f"Encountered invalid data with prompt {prompt} and response {resp}: {e}, retrying")
-                    time.sleep(10)
-                    continue
-                
-                #*
-                gen_boxes = [{'name': box[0], 'bounding_box': box[1]} for box in raw_gen_boxes]
-                gen_boxes = filter_boxes(gen_boxes, scale_boxes=scale_boxes)
-                if not args.no_visualize:
-                    show_boxes(gen_boxes, bg_prompt=bg_prompt, neg_prompt=neg_prompt, ind=ind)
-                    plt.clf()
-                    print(f"Visualize masks at {parse.img_dir}")
-                if not args.always_save:
-                    save = input("Save (y/n)? ").strip()
-                else:
-                    save = "y"
-                if save == "y" or save == "Y":
-                    response = f"{raw_gen_boxes}\n{bg_prompt_text}{bg_prompt}\n{neg_prompt_text}{neg_prompt}"
-                    cache.add_cache(prompt, response)
-                else:
-                    print("Not saved. Will generate the same prompt again.")
-                    continue
-                break
-        else:
-            print(f"Cache hit: {prompt}")
-            
-            if visualize_cache_hit:
-                raw_gen_boxes, bg_prompt, neg_prompt = parse_input_with_negative(text=response)
-                
-                gen_boxes = [{'name': box[0], 'bounding_box': box[1]} for box in raw_gen_boxes]
-                gen_boxes = filter_boxes(gen_boxes, scale_boxes=scale_boxes)
-                show_boxes(gen_boxes, bg_prompt=bg_prompt, neg_prompt=neg_prompt, ind=ind)
-                plt.clf()
-                print(f"Visualize masks at {parse.img_dir}")
-
+    # Load canvas input into bounding boxes
+    gen_boxes = [{'name': box[0], 'bounding_box': box[1]} for box in raw_gen_boxes]
+    gen_boxes = filter_boxes(gen_boxes, scale_boxes=scale_boxes)
+    
+    if not args.no_visualize:
+        show_boxes(gen_boxes, bg_prompt=bg_prompt, neg_prompt=neg_prompt)
+        plt.clf()
+        print(f"Visualize masks at {parse.img_dir}")
+    
+    # Save cache of this round
+    response = f"{raw_gen_boxes}\n{bg_prompt_text}{bg_prompt}\n{neg_prompt_text}{neg_prompt}"
+    cache.add_cache(prompt, response)

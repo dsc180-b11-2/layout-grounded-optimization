@@ -60,6 +60,13 @@ def get_cache(key):
     return None
     
 def add_cache(key, value):
+    if key not in global_cache:
+        global_cache[key] = []
+        
+    if key not in global_cache_index:
+        global_cache_index[key] = 0
+    
+        
     global_cache_index[key] += 1
     global_cache[key].append(value)
     
