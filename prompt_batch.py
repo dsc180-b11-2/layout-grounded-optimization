@@ -81,7 +81,7 @@ if __name__ == "__main__":
                     print("Response:", resp)
                 
                 try:
-                    parsed_input = parse_input_from_canvas('/mnt/hd1/jwsong/LLM-groundedDiffusion/canvas_input/data.json')#parse_input_with_negative(text=resp, no_input=args.auto_query)
+                    parsed_input = parse_input_from_canvas('/mnt/hd1/jwsong/canvas-lmd-rt/canvas_input/data_1.json')#parse_input_with_negative(text=resp, no_input=args.auto_query)
                     # parsed_input = parse_input_with_negative(text=resp, no_input=args.auto_query)
                     if parsed_input is None:
                         raise ValueError("Invalid input")

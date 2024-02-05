@@ -57,7 +57,6 @@ function drawAll() {
 }
 
 function saveJsonToFile(jsonData, filename) {
-    // Convert JSON object to a string
     const jsonString = JSON.stringify(jsonData, null, 4); // null and 4 are used for formatting
 
     // Create a Blob object with the JSON string
@@ -89,6 +88,15 @@ function saveJsonToFile(jsonData, filename) {
 }
 
 function saveRectangle() {
+
+    const bkgInput = document.getElementById("background").value;
+    const negInput = document.getElementById("negative").value;
+
+    if (!bkgInput) {
+        alert('Please enter both a color and a label before drawing.');
+        return; // Exit the function if either input is empty
+    }
+
     let allRectData = []
     for (rect of rectangles){
         let rectData = {
@@ -102,8 +110,13 @@ function saveRectangle() {
         allRectData.push(rectData)
     }
     
+    let outputData = {}
+    outputData['rectangles'] = allRectData
+    outputData['background'] = bkgInput
+    outputData['negative'] = negInput
+
     // console.log(JSON.stringify(allRectData));
-    saveJsonToFile(allRectData, "data.json");
+    saveJsonToFile(outputData, "data.json");
 
     // Send rectangleData to the server
     fetch('/raw_canvas_implementation_1/save_rectangle.php', {

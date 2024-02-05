@@ -1,0 +1,22 @@
+{
+    "rectangles": [
+        {
+            "label": "cat",
+            "startX": 44,
+            "startY": 271,
+            "endX": 298,
+            "endY": 452,
+            "color": "#6BFFB3"
+        },
+        {
+            "label": "dog",
+            "startX": 274,
+            "startY": 61,
+            "endX": 474,
+            "endY": 362,
+            "color": "#FF52DF"
+        }
+    ],
+    "background": "playground",
+    "negative": ""
+}

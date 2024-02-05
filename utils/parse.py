@@ -144,37 +144,40 @@ def parse_input_from_canvas(fp, no_input=False):
         
     with open(fp, 'r') as file:
         data = json.load(file)
+        
+    bg_prompt = data['background']
+    neg_prompt = data['negative']
 
     raw_gen_boxes = []
-    for item in data:
+    for item in data['rectangles']:
         raw_gen_boxes.append((item['label'], [item['startX'], item['startY'], item['endX'], item['endY']]))
        
     ### Process background prompt
     # instead of splitting (filtering, we go straight to asking)
     # text_split = text.split(bg_prompt_text_no_trailing_space)
     
-    text_rem = input("Enter the background prompt: ").strip() # stripped / is storing the tuples. input message after the input?
+    # text_rem = input("Enter the background prompt: ").strip() # stripped / is storing the tuples. input message after the input?
     
     #### negative prompt
     # filter this time
-    text_split = text_rem.split(neg_prompt_text_no_trailing_space)
+    # text_split = text_rem.split(neg_prompt_text_no_trailing_space)
     
-    if len(text_split) == 2:
-        bg_prompt, neg_prompt = text_split
-    elif len(text_split) == 1:
-        bg_prompt = text_rem
-        # Negative prompt is optional: if it's not provided, we default to empty string
-        neg_prompt = ""
-        if not no_input:
-            # Ignore the empty lines in the response
-            neg_prompt = input("Enter the negative prompt: ").strip()
-            if neg_prompt_text_no_trailing_space in neg_prompt:
-                neg_prompt = neg_prompt.split(neg_prompt_text_no_trailing_space)[1]
-    else:
-        raise user_error(f"Invalid input (possibly multiple negative prompts): {text}")
+    # if len(text_split) == 2:
+    #     bg_prompt, neg_prompt = text_split
+    # elif len(text_split) == 1:
+    #     bg_prompt = text_rem
+    #     # Negative prompt is optional: if it's not provided, we default to empty string
+    #     neg_prompt = ""
+    #     if not no_input:
+    #         # Ignore the empty lines in the response
+    #         neg_prompt = input("Enter the negative prompt: ").strip()
+    #         if neg_prompt_text_no_trailing_space in neg_prompt:
+    #             neg_prompt = neg_prompt.split(neg_prompt_text_no_trailing_space)[1]
+    # else:
+    #     raise user_error(f"Invalid input (possibly multiple negative prompts): {text}")
 
-    bg_prompt = bg_prompt.strip()
-    neg_prompt = neg_prompt.strip()
+    # bg_prompt = bg_prompt.strip()
+    # neg_prompt = neg_prompt.strip()
     
     # LLM may return "None" to mean no negative prompt provided.
     if neg_prompt == "None":

@@ -1,18 +1,26 @@
 [
     {
-        "label": "dog",
-        "startX": 55,
-        "startY": 183,
-        "endX": 175,
-        "endY": 376,
-        "color": "#1A1A1A"
+        "label": "cat",
+        "startX": 115,
+        "startY": 323,
+        "endX": 115,
+        "endY": 323,
+        "color": "#FFCE1F"
     },
     {
         "label": "cat",
-        "startX": 278,
-        "startY": 254,
-        "endX": 486,
-        "endY": 403,
-        "color": "#E69617"
+        "startX": 59,
+        "startY": 285,
+        "endX": 248,
+        "endY": 473,
+        "color": "#FFCE1F"
+    },
+    {
+        "label": "dog",
+        "startX": 282,
+        "startY": 101,
+        "endX": 408,
+        "endY": 350,
+        "color": "#FF666E"
     }
 ]
