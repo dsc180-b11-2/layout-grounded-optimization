@@ -128,6 +128,7 @@ if args.run_model in our_models:
     sam_model_dict = sam.load_sam()
     models.model_dict.update(sam_model_dict)
 
+# depends on the model, we load it as the package generation
 if not args.dry_run:
     if args.run_model == "lmd":
         import generation.lmd as generation
@@ -153,6 +154,8 @@ if not args.dry_run:
     # Sanity check: the version in the imported module should match the `run_model`
     version = generation.version
     assert version == args.run_model, f"{version} != {args.run_model}"
+    
+    # define the run function by which ever generation library we selected
     run = generation.run
     if args.use_sdv2:
         version = f"{version}_sdv2"
