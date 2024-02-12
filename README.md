@@ -1,107 +1,13 @@
-# LLM-grounded Diffusion: Enhancing Prompt Understanding of Text-to-Image Diffusion Models with Large Language Models
-[Long Lian](https://tonylian.com/), [Boyi Li](https://sites.google.com/site/boyilics/home), [Adam Yala](https://www.adamyala.org/), [Trevor Darrell](https://people.eecs.berkeley.edu/~trevor/) at UC Berkeley/UCSF.
+# LLM-grounded Diffusion with Canvas Input
+Jiatu Li, Vicky Mao, Zhengyun Nie, Jessica Song
 
-[Paper](https://arxiv.org/pdf/2305.13655.pdf) | [Project Page](https://llm-grounded-diffusion.github.io/) | [**5-minute Blog Post**](https://bair.berkeley.edu/blog/2023/05/23/lmd/) | [**HuggingFace Demo (updated!)**](https://huggingface.co/spaces/longlian/llm-grounded-diffusion) | [Citation](#citation) | [LLM-grounded Video Diffusion Models](https://llm-grounded-video-diffusion.github.io/)
+This project aims to advance the field of image generation by addressing a common challenge in state-of-the-art models: numerical accuracy in generated images. Despite the impressive capabilities of models like MidJourney and DALL·E, they often struggle with accurately representing the number of objects specified in text prompts. Our project focuses on enhancing the numerical precision of image generation models by integrating Large Language Models (LLMs) with diffusion-based techniques.
 
-**TL;DR**: Text Prompt -> LLM as a Request Parser -> Intermediate Representation (such as an image layout) -> Stable Diffusion -> Image.
+We propose a novel system that not only generates images based on textual descriptions but also allows users to influence the positioning of objects through simple drawings. This dual-input approach ensures that the generated images not only adhere to the artistic or stylistic specifications conveyed in the text but also respect the spatial arrangements indicated by the user.
 
-![Main Image](https://llm-grounded-diffusion.github.io/main_figure.jpg)
-![Visualizations: Enhanced Prompt Understanding](https://llm-grounded-diffusion.github.io/visualizations.jpg)
+Our approach builds upon the concept of Stable Diffusion, where images are generated from noise by reversing a diffusion process guided by textual descriptions. We enhance this process by incorporating LLMs to parse the text input into structured data, including object types and their intended positions. This structured input is then used to guide the diffusion process, ensuring that the generated images meet both the numerical and positional criteria specified by the user.
 
-## Updates
-**[2023.11]** **Our LLM-grounded Diffusion (LMD+) has been officially integrated to upstream diffusers v0.24.0!** This is an [example colab](https://colab.research.google.com/drive/1SXzMSeAB-LJYISb2yrUOdypLz4OYWUKj) that shows using our pipeline with official `diffusers`. The implementation in upstream `diffusers` is a simplified LMD+, and we recommend using the current full repo to reproduce our results.
-
-<details>
-  <summary>Using our pipeline with only a few lines of code with official diffusers</summary>
-
-```python
-# Requires diffusers >= 0.24.0
-
-import torch
-from diffusers import DiffusionPipeline
-
-pipe = DiffusionPipeline.from_pretrained(
-    "longlian/lmd_plus",
-    custom_pipeline="llm_grounded_diffusion",
-    custom_revision="main",
-    variant="fp16", torch_dtype=torch.float16
-)
-pipe.enable_model_cpu_offload()
-
-# An example prompt with LLM response
-prompt = "a waterfall and a modern high speed train in a beautiful forest with fall foliage"
-llm_response = """
-[('a waterfall', [71, 105, 148, 258]), ('a modern high speed train', [255, 223, 181, 149])]
-Background prompt: A beautiful forest with fall foliage
-Negative prompt:
-"""
-
-phrases, boxes, bg_prompt, neg_prompt = pipe.parse_llm_response(llm_response)
-
-# Use `LLMGroundedDiffusionPipeline` to generate an image
-images = pipe(
-    prompt=prompt,
-    negative_prompt=neg_prompt,
-    phrases=phrases,
-    boxes=boxes,
-    gligen_scheduled_sampling_beta=0.4,
-    output_type="pil",
-    num_inference_steps=50,
-    lmd_guidance_kwargs={}
-).images
-
-# PIL Image:
-images[0]
-```
-</details>
-
-**[2023.10]** **Our repo now supports using SDXL for high-quality generation with SDXL Refiner! Simply add `--sdxl` to generation command to use it.** You can also use `--sdxl-step-ratio` to control the strength of the refinement (use `0.5` for stronger refinement and `0.1` for weaker refinement). **See examples above.**
-
-**[2023.10]** **Please also check out our new work <a href='https://llm-grounded-video-diffusion.github.io/'>LLM-grounded Video Diffusion Models (LVD)</a>, which shows that LLMs have knowledge in their weights that can ground video diffusion models 🔥🔥🔥!**
-
-**[2023.8]** **Our repo has been largely improved: now we have a repo with many methods implemented, including our training-free LMD and LMD+ (LMD with GLIGEN adapters).**
-
-**[2023.6]** Our huggingface WebUI demo for stage 1 and 2 is updated: now we support enabling each of the guidance components to get a taste of contributions! [Check it out here](https://huggingface.co/spaces/longlian/llm-grounded-diffusion).
-
-Our WebUI is also available to run locally. [The instructions to run our WebUI locally to get faster generation without queues are here](webui/README.md).
-
-## Our repo implements the following layout-to-image methods (stage 2)
-These methods can be freely combined with our proposed LLM-based box-to-layout method (stage 1) also implemented in this repo.
-
-- [x] Training-Free LMD (Using original SD v1/v2 weights)
-- [x] LMD+ (Training-Free LMD that uses both cross-attention control and GLIGEN adapters) 
-- [x] [Layout Guidance (Backward Guidance)](https://arxiv.org/abs/2304.03373)
-- [x] [BoxDiff (ICCV '23)](https://arxiv.org/abs/2307.10816)
-- [x] [MultiDiffusion (Region Control, ICML '23)](https://arxiv.org/abs/2302.08113)
-- [x] [GLIGEN (CVPR '23)](https://arxiv.org/abs/2301.07093)
-
-Feel free to contact me / submit a pull request to add your methods!
-
-## Our repo's features
-* **(New) Supports SDXL refiner for high-resolution high-quality generation**
-* **Both web-based ChatGPT and OpenAI API on GPT-3.5/4 supported**: Allows generating bounding boxes by either asking ChatGPT yourself (free) or in batch with OpenAI API (fully automated).
-* **LLM queries are cached to save $$$ on LLM APIs:** we cache each LLM query for layout generation so it does not re-generate the layouts from the same prompt.
-* **Open-source LLMs supported!**: Host LLMs yourself for more freedom and lower costs! We support Vicuna, LLaMA 2, StableBeluga2, etc. More in [FAQ](#FAQ).
-* **Supports both LMD** (which uses SD weights without training and performs attention guidance) **and LMD+** (which adds GLIGEN adapters to SD in addition to attention guidance)
-* **Supports SD v1 and SD v2 in the same codebase**: if you implement a new feature or a new loss, it's likely that it will work on both SD v1 and v2.
-* **Several baseline stage 2 methods implemented in the same codebase**: handy if you want to benchmark and compare
-* **Hackable**: we provide a minimal copy of diffusion UNet architecture in our repo that exports the attention maps according to your need. This allows you to change things **without maintaining your own diffusers package**.
-* **Parallel and resumable image generation supported!** You can generate in parallel to make use of multiple GPUs/servers. If a generation fails on some images (e.g., CUDA OOM), you can simply rerun generation to regenerate those. More in [FAQ](FAQ).
-* **Modular**: we implement different methods in different files. Copy from a file in `generation` and start creating your method without impacting existing methods.
-* **Web UI supported**: don't want to code or run anything? Try our [public WebUI demo](https://huggingface.co/spaces/longlian/llm-grounded-diffusion) or instructions to [run WebUI locally](webui/README.md).
-
-<details>
-<summary> And more exciting features! Expand to see. </summary>
-
-* **FlashAttention and PyTorch v2 supported**.
-* **Unified benchmark:** same evaluation protocol on layouts (stage 1) and generated images (stage 1+2) for all methods implemented. The benchmark is in beta and might change.
-* **Provides different presets** to balance better control and fast generation in Web UI.
-
-</details>
-
-# LLM-grounded Diffusion (LMD)
-We provide instructions to run our code in this section.
-## Installation
+## Getting Started
 ```
 pip install -r requirements.txt
 ```
