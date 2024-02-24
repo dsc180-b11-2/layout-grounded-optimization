@@ -1,6 +1,13 @@
 theme: jekyll-theme-simplex
+title: the Simplex theme
 # logo_img: /assets/img/icons/golasblog_logo.svg #Absolute path to the logo. If not specified, the title will be displayed instead.
+# favicon: /assets/favicon.ico
+description: description
+global_tags: jekyll theme simplex golasblog responsive html5
 # copyright: © Golasowski 2020 #Your copyright.
+
+sass:
+    style: compressed
 
 collections:
     category:
