@@ -48,7 +48,7 @@ For more mathematical details on diffusion models, we recommend [Lilian Weng's B
 
 - Use classifier-free guidance for each region to better match the prompt.
 - When the color is specified, we apply gradient guidance on the current clean image prediction to exploit the RGB values
-- We then compute an MSE loss \(L\) between the average color of \(\hat{x}\) weighted by the token map \(M_{e_i}\) and the RGB triplet \(a_i^c\).
+- We then compute an MSE loss \(L\) between the average color of \($\hat{x}\$) weighted by the token map \($M_{e_i}$\) and the RGB triplet \($a_i^c$\).
 - Apply cross attention with the tokens to control the color.
 
 ### Layout-grounded Stable Diffusion
