@@ -22,6 +22,8 @@ We utilize a new structure, Layout-Grounded Stable Diffusion (LMD) from [lian202
 - Optimize LMD's ability in generating more accurate and reliable photos
 - Evaluate the quality of generated photos
 
+  {"Bad Image" vs "Ours"}
+
 ## Background
 In this project, we study diffusion models, the underlying idea behind many state-of-the-art image generation models like Midjourney, DALL-E and Stable Diffusion. There are two steps to diffusion models: forward and backward.
 
