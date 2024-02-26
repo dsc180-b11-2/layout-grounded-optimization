@@ -1,3 +1,6 @@
+# Beyond Text-to-Image: Layout-Grounded Stable Diffusion Optimization for Accurate Image Generation
+
+
 **Authors:** Jiatu Li, Wanting Mao, Zhengyun Nie, Jessica Song 
 
 **Emails:** {jil165, wamao, znie, jwsong}@ucsd.edu
