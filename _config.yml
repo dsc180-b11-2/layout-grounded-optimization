@@ -1,9 +1,9 @@
 # Site settings
-title: Richard Feynman
+title: Beyond Text-to-Image:
 email: richard@university.edu
 description: Academic webpage of Dr. Richard Feynman
 baseurl: ""
-url: ""
+url: "https://dsc180-b11-2.github.io/layout-grounded-optimization/"
 
 # Google analytics ID: Uncomment and your own, if you like
 # google_analytics: XX
