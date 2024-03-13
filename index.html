@@ -32,7 +32,8 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> --> 
+  <!-- we can update icon here -->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -88,24 +89,30 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Beyond Text-to-Image: Layout-grounded Stable Diffusion Optimization<</h1>
+          <h2 class="title is-1 publication-title" style="font-size: x-large;">Beyond Text-to-Image:</h2><h1 class="title is-1 publication-title" style="font-size: xxx-large;">Layout-Grounded Stable Diffusion Optimization</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a >Jiatu Li</a>,</span>
+              <a >Jiatu Li<sup>1</sup></a>,</span>
             <span class="author-block">
-              <a href="https://wantingmao01.github.io/">Wanting Mao</a>,</span>
+              <a href="https://wantingmao01.github.io/">Wanting Mao<sup>1</sup></a>,</span>
             <span class="author-block">
-              <a >Zhengyun Nie</a>,
+              <a >Zhengyun Nie<sup>1</sup></a>,
             </span>
             <span class="author-block">
-              <a >Jessica Song</a>
+              <a >Jessica Song<sup>1</sup></a>
+            </span>,
+            <span class="author-block">
+              <a href="https://sites.google.com/ucsd.edu/alexandercloninger/home">Alex Cloninger<sup>1,*</sup></a>
+            </span>,
+            <span class="author-block">
+              <a href="https://mathweb.ucsd.edu/~rsaab/">Rayan Saab<sup>1,*</sup></a>
             </span>
           </div>
 
-<!--           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
-          </div> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup> University of California, San Diego</span>,
+            <span class="author-block"><sup>*</sup>Mentor</span>
+          </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
@@ -119,7 +126,7 @@
                   <span>Paper</span>
                 </a>
               </span>
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a href="https://arxiv.org/abs/2011.12948"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -127,9 +134,9 @@
                   </span>
                   <span>arXiv</span>
                 </a>
-              </span>
+              </span> -->
               <!-- Video Link. -->
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -137,10 +144,10 @@
                   </span>
                   <span>Video</span>
                 </a>
-              </span>
+              </span> -->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/google/nerfies"
+                <a href="https://github.com/dsc180-b11-2/layout-grounded-optimization"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -150,7 +157,7 @@
               </span>
               <!-- Dataset Link. -->
               <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                <a href="https://github.com/dsc180-b11-2/layout-grounded-optimization"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
@@ -166,23 +173,28 @@
   </div>
 </section>
 
-<!-- <section class="hero teaser">
+<!-- <section class = 'gallery'>
+
+</section> -->
+
+<section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
         <source src="./static/videos/teaser.mp4"
                 type="video/mp4">
-      </video>
+      </video> -->
+      <img src="./static/images/gallery.png"
+                 class="gallery"
+                 alt="Comparison of DIL and previous methods"/>
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
+<span class="dnerf">Diffusion Image generation model based on Layout</span> offers precise control over object numeracy and location.
       </h2>
     </div>
   </div>
 </section>
 
-
+<!-- 
 <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
@@ -238,7 +250,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
 <section class="section">
@@ -249,74 +261,50 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
-          </p>
-          <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
-          </p>
-          <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
+            Diffusion models have been shown as the state-of-the-art methods to generate 
+            realistic and diverse images based on text prompts, powering models like Stable Diffusion,
+             MidJourney and DALL·E. However, stable diffusion still often make mistakes regarding 
+             generating accurately according to numerical information and the object positions.
+              This work proposes a new method to solve the object position problem by letting 
+              users draw bounding boxes of objects to indicate their location, which to be used
+               as part of the input, besides providing text prompts only. Our model then utilizes
+                Layout-Grounded Stable Diffusion from \cite{lian2023llmgrounded} as the backbone to
+                 solve the numeracy question so that the actual number of objects in the generated 
+                 image could match the number specified in the original text prompt. By composing 
+                 objects onto the positions specified by the user, our model can accurately generate
+                  images with numerical and positional information coherent with the text prompt. 
+                  Through our work, we identify the best coefficients for the above steps using Fréchet
+                   Inception Distance. In addition, our model also introduces more diverse and specific
+                    user input through integrating a canvas interface that supports specifying image 
+                    generation subject location, size and color.
           </p>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
 
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
+    
     <!--/ Paper video. -->
   </div>
-</section>
+</section> 
 
-
+<!-- Methods -->
 <section class="section">
   <div class="container is-max-desktop">
-
+    
+    <h2 class="title is-3" style="text-align: center;">Methods</h2>
     <div class="columns is-centered">
+    
 
-      <!-- Visual Effects. -->
+      <!-- Canvas -->
       <div class="column">
         <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
+          <h2 class="title is-3">Canvas</h2>
+          <img src="./static/images/canvas_demo.png" 
+          alt="Image of our Canvas Interface"/>
         </div>
       </div>
-      <!--/ Visual Effects. -->
 
-      <!-- Matting. -->
+      <!-- Explanation -->
       <div class="column">
         <h2 class="title is-3">Matting</h2>
         <div class="columns is-centered">
@@ -325,10 +313,6 @@
               As a byproduct of our method, we can also solve the matting problem by ignoring
               samples that fall outside of a bounding box during rendering.
             </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
           </div>
 
         </div>
