@@ -8,20 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Beyond Text-to-Image: Layout-grounded Stable Diffusion Optimization </title>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<!--   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
- -->
-<!--     function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
- -->
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
@@ -32,8 +18,6 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <!-- <link rel="icon" href="./static/images/favicon.svg"> --> 
-  <!-- we can update icon here -->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -52,47 +36,6 @@
 </head>
 <body>
 
-<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</nav>
- -->
-
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
@@ -108,7 +51,7 @@
               <a >Zhengyun Nie<sup>1</sup></a>,
             </span>
             <span class="author-block">
-              <a >Jessica Song<sup>1</sup></a>
+              <a href="https://www.linkedin.com/in/jesswsong/">Jessica Song<sup>1</sup></a>
             </span>,
             <span class="author-block">
               <a href="https://sites.google.com/ucsd.edu/alexandercloninger/home">Alex Cloninger<sup>1,*</sup></a>
@@ -122,6 +65,9 @@
             <span class="author-block"><sup>1</sup> University of California, San Diego</span>,
             <span class="author-block"><sup>*</sup>Mentor</span>
           </div>
+          <div>
+            <span class="author-block" style="font-size:medium;">Equal Contribution</span>
+          </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
@@ -132,7 +78,7 @@
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                   </span>
-                  <span>Paper</span>
+                  <span>Report</span>
                 </a>
               </span>
               <!-- <span class="link-block">
@@ -166,13 +112,13 @@
               </span>
               <!-- Dataset Link. -->
               <span class="link-block">
-                <a href="https://github.com/dsc180-b11-2/layout-grounded-optimization"
+                <a href="https://drive.google.com/file/d/1LxQnwsxSMfa9k9hL2L7ujU7k-nmTEof6/view?usp=sharing"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
                   </span>
-                  <span>Data</span>
-                  </a>
+                  <span>Poster</span>
+                </a>
             </div>
 
           </div>
@@ -182,17 +128,9 @@
   </div>
 </section>
 
-<!-- <section class = 'gallery'>
-
-</section> -->
-
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video> -->
       <img src="./static/images/gallery.png"
                  class="gallery"
                  alt="Comparison of DIL and previous methods"/>
@@ -202,64 +140,6 @@
     </div>
   </div>
 </section>
-
-<!-- 
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
 
 
 <section class="section">
@@ -277,7 +157,8 @@
               This work proposes a new method to solve the object position problem by letting 
               users draw bounding boxes of objects to indicate their location, which to be used
                as part of the input, besides providing text prompts only. Our model then utilizes
-                Layout-Grounded Stable Diffusion from \cite{lian2023llmgrounded} as the backbone to
+                Layout-Grounded Stable Diffusion from 
+                <a href="https://llm-grounded-diffusion.github.io/">Lian et al.</a> as the backbone to
                  solve the numeracy question so that the actual number of objects in the generated 
                  image could match the number specified in the original text prompt. By composing 
                  objects onto the positions specified by the user, our model can accurately generate
@@ -308,49 +189,42 @@
           <h2 class="title is-3">Canvas</h2>
           <img src="./static/images/canvas_demo.png" 
           alt="Image of our Canvas Interface"/>
-
-          <p>
-            For our product, we utilize a canvas interface to introduce a creative artistic canvas for the user 
-            to freely define a framework for their desired image. Through this canvas, you can draw bounding boxes 
-            at desired locations and label the object whatever you want (e.g. a cat on the left). 
-            Moreover, you can define the desired background of this photo (e.g. on grass).
-            Lastly, you can also define the negative prompt - whatever you wish to not appear in the image. 
-
-            After pressing the <code>Save Input</code> button, this canvas will generate a <code>.json</code> file. 
-            This file can later be used to pass into the model. 
-
-            Unfortunately, given our time and technical constraints, we weren't able to host the canvas interface along with the model on one server. This is a future development!
-          </p>
         </div>
       </div>
 
       <!-- Explanation -->
       <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
+        <div class="columns is-centered vertically-centered">
           <div class="column content">
             <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
+              For our product, we utilize a canvas interface to introduce a creative artistic canvas for the user 
+              to freely define a framework for their desired image. Through this canvas, you can draw bounding boxes 
+              at desired locations and label the object whatever you want (e.g. a cat on the left). 
+              Moreover, you can define the desired background of this photo (e.g. on grass).
+              Lastly, you can also define the negative prompt - whatever you wish to not appear in the image. 
+  
+              After pressing the <code>Save Input</code> button, this canvas will generate a <code>.json</code> file. 
+              This file can later be used to pass into the model. 
+  
+              Unfortunately, given our time and technical constraints, we weren't able to host the canvas interface along with the model on one server. This is a future development!
             </p>
           </div>
 
         </div>
       </div>
     </div>
-    <!--/ Matting. -->
 
-    <!-- Animation. -->
+    
+
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Optimization</h2>
 
-        <!-- Interpolating. -->
         <h3 class="title is-4">Numerical Accuracy</h3>
         <div class="content has-text-justified">
             <p> We generated 500 images with prompts "A realistic image of one cup", "A realistic image of five cups", and "A realistic image of ten cups". The model can generate accurate images when the task is relatively simple. However, as the task is more demanding, the model is more likely to create more objects than needed or have two objects merged together.</p>
             <table>
-                <caption>Numerical Accuracy for Different Prompts</caption>
+              <caption style="font-style: italic;">Numerical Accuracy for Different Prompts</caption>
                 <tr>
                     <th>r</th>
                     <th>One Cup</th>
@@ -358,130 +232,168 @@
                     <th>Ten Cups</th>
                 </tr>
                 <tr>
-                    <td>0.75</td>
-                    <td>99.4%</td>
-                    <td>90.8%</td>
-                    <td>53.6%</td>
+                  <td>0 (SDXL)</td>
+                  <td>94.5%</td>
+                  <td>10%</td>
+                  <td>1.5%</td>
+              </tr>
+                <tr>
+                    <td>0.75 (Ours)</td>
+                    <td><b><em>99.4%</em></b></td>
+                    <td><b><em>90.8%</em></b></td>
+                    <td><b><em>53.6%</em></b></td>
                 </tr>
             </table>
         </div>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Image Quality</h3>
-        <div class="content has-text-justified">
-            <p> We generated 1000 images with fixed bounding boxes and varied frozen step ratio \(r\) for two prompts: "A realistic image of a dog" and "A realistic image of a flower".</p>
-            <img src="./static/images/canvas_demo.png" 
-            alt="Image of our Canvas Interface"/>
-        </div>
-
-        <!-- Numercial Accuracy Problems -->
-        <h3 class="title is-4">Numeracy Problems Analysis</h3>
-        <div class="content has-text-justified">
-            <p>We noticed two major causes to decrease numerical accuracy in generated images:</p>
-            <img src="./static/images/num_prob_1.png" />
-            <img src="./static/images/num_prob_2.png" />
-        </div>
-
-<!--         
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
+        <div class="container is-max-desktop" style="margin-top: 40px;">
+    
+          <h3 class="title is-4">Image Quality</h3>
+          <div class="content has-text-justified">
+            <p> We generated 1000 images with fixed bounding boxes and varied frozen step ratio 
+              \(r\) for two prompts: "A realistic image of a dog" and "A realistic image of a flower".
+          </p>    
           </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
+          <div class="columns is-centered">
+            <div class="column">
+              <div class="content">
+                <figure>
+                  <img src="./static/images/FID.png" 
+                  style="text-align: center;" alt="FID with varying Frozen Step Ratio"/>
+                  <figcaption>FID with varying Frozen Step Ratio</figcaption>
+                </figure>
+              </div>
             </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
+            <div class="column">
+              <div class="columns is-centered">
+                <div class="column content">
+                  <figure>
+                    <img src="./static/images/FID2.png" 
+                    style="text-align: center;" alt="FID Zoom-in"/>
+                    <figcaption>Zoom-in: FID Trend for two Prompts</figcaption>
+                  </figure>
+                </div>
+      
+              </div>
+            </div>
           </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
+        </div>
+ 
+  <!-- Numercial Accuracy Problems -->
+        <div class="container is-max-desktop" style="margin-top: 40px;">
+          <h3 class="title is-4">Numeracy Problems Analysis</h3>
+          <div class="content has-text-justified">
+            <p>  We noticed two major causes to decrease numerical accuracy in generated images:</p>    
           </div>
-        </div> -->
-        <br/>
-        <!--/ Interpolating. -->
+          <div class="columns is-centered">
+            <div class="column">
+              <div class="content">
+                <figure>
+                  <img src="./static/images/num_prob_1.png" alt="An Example of Error Image"/>
+                  <figcaption>Problem 1: Object Interaction</figcaption>
+                </figure>
+                <p style="text-align: center;">
+                  Objects interact, causing a single masked latent to encapsulate multiple objects.
+                </p>
+              </div>
+            </div>
+            <div class="column">
+              <div class="columns is-centered">
+                <div class="column content">
+                  <figure>
+                    <img src="./static/images/num_prob_2.png" alt="An Example of Error Image"/>
+                    <figcaption>Problem 2: Similar objects in background</figcaption>
+                  </figure>
+                  <p style="text-align: center;">
+                    Diffusion model may use the prompt to produce similar objects in the background.                   </p>
+                </div>
 
-        <!-- Re-rendering. -->
-        <!-- <h3 class="title is-4">Re-rendering the input video</h3> -->
-        <!-- <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div> -->
-        <!--/ Re-rendering. -->
-
-      </div>
-    </div>
-    <!--/ Animation. -->
-
-
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Concurrent Work. -->
-
   </div>
 </section>
 
 <!-- Methods -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3" style="text-align: center;">Methods</h2>
+
+    <h3 class="title is-4">Background: Layout-grounded Stable Diffusion</h3>
+    <div class="content has-text-justified">
+        <p><strong><em>Layout-grounded Generative Model</em></strong>, by 
+          <a href="https://llm-grounded-diffusion.github.io/">Lian et al.</a>, 
+          is a novel controller is introduced to 
+          guide an existing diffusion model, such as Stable Diffusion, which originally 
+          lacks this specific training objective. This guidance ensures adherence to the 
+          layout generated in the initial phase. The process of generating the image in 
+          this stage involves two main steps: generating masked latents for each object 
+          specified in the layout (e.g., cats and dogs) with attention control to ensure 
+          accurate placement within the designated boxes, followed by the coherent composition
+           of these masked latents onto the background noisy image. This results in a final 
+           image that aligns with the specified foreground and background based on the text
+            prompt.
+        </p>  
+    </div>
+    <figure style="text-align: center; margin-top: 40px;">
+      <img src="./static/images/LMD Stage 2.png" alt="Layout-Grounded Stable Diffusion Workflow" width="700"/>
+      <figcaption style="text-align: center;">Per-box masked latent generation tor instance-level 
+        control (<a href="https://llm-grounded-diffusion.github.io/">Lian et al.</a>)</figcaption>
+    </figure>
+    <div style="margin-top: 40px;">
+      <p>
+        In the layout-grounded model, a critical parameter is <em><b>Frozen Step Ratio</b></em>, \(r\), which 
+        represents the ratio of the number of time steps during which the masked latents
+         and the background image are composed, to the total number of steps in the reverse 
+         diffusion process.
+      </p>
+    </div>
+    <div style="margin-top: 20px;">
+      <div class="image-container">
+        <img class = "flower-image" src="static/images/flower r=0.jpg" alt="r = 0">
+        <img class = "flower-image" src="static/images/flower r = 0.25.jpg" alt="r = 0.25" >
+        <img class = "flower-image" src="static/images/flower r = 0.5.jpg" alt="r = 0.5" >
+        <img class = "flower-image" src="static/images/flower r = 0.75.jpg" alt="r = 0.75" >
+        <img class = "flower-image" src="static/images/flower r = 1.jpg" alt="r = 1">
+      </div>
+      <div class="axis">
+        <div class="point" style="left: 0%"></div>
+        <div class="point" style="left: 25%;"></div>
+        <div class="point" style="left: 50%;"></div>
+        <div class="point" style="left: 75%;"></div>
+        <div class="point" style="left: 100%;"></div>
+        <div class="label" style="left: 0%">0</div>
+        <div class="label" style="left: 0% ;bottom: -60px;">(SDXL)</div>
+        <div class="label" style="left: 25%;">0.25</div>
+        <div class="label" style="left: 50%;">0.5</div>
+        <div class="label" style="left: 50%;bottom: -70px;">Frozen Step Ratio \(r\)</div>
+        <div class="label" style="left: 75%;">0.75</div>
+        <div class="label" style="left: 100%;">1</div>
+        <div class="label" style="left: 100% ;bottom: -50px;">(Copy&Paste)</div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+</section>
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
-}</code></pre>
+    <h2 class="title">Acknowledgement</h2>
+    <div style="background-color: #fafafa; padding: 20px;">
+      <p>We would like to thank Professor Cloninger and Professor Saab for all the 
+        instructions in the past two quarters. Thanks to Professor Suraj for leading 
+        this wonderful capstone project, our TA Keng-Chi for his help. Last but not 
+        least, thanks for the hard working DSMLP GPUs. 
+      </p>
+    </div>
   </div>
-</section> -->
+</section> 
 
 
 <footer class="footer">
   <div class="container">
-    <div class="content has-text-centered">
+    <!-- <div class="content has-text-centered">
       <a class="icon-link"
          href="./static/videos/nerfies_paper.pdf">
         <i class="fas fa-file-pdf"></i>
@@ -489,21 +401,12 @@
       <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
-    </div>
+    </div> -->
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
           <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
+            Website adapted from <a href="https://nerfies.github.io/">Nerfies</a>.
           </p>
         </div>
       </div>

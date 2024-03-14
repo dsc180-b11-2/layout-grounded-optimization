@@ -155,3 +155,51 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+.vertically-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh; /* Optional: adjust the height based on your layout */
+}
+
+.image-container {
+  display: flex; /* Use flexbox */
+}
+
+.flower-image {
+  width: 180px; /* Set the width of each image */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 10px; /* Add spacing between images */
+  transition: transform 0.2s ease; 
+}
+
+.flower-image:hover {
+  transform: scale(1.8); /* Enlarge the image on hover */
+  z-index: 1;
+}
+
+.axis {
+  position: relative;
+  margin-left: 90px;
+  margin-right: 110px;
+  height: 5px;
+  background-color: lightgray;
+  margin-top: 20px;
+}
+
+.point {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 50%;
+  bottom: -2.5px;
+  transform: translateX(-50%);
+}
+
+.label {
+  position:absolute;
+  bottom: -40px;
+  transform: translateX(-50%);
+}
