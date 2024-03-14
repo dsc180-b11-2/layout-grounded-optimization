@@ -40,6 +40,15 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaTeX Math in HTML with MathJax</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 </head>
 <body>
 
@@ -282,16 +291,14 @@
       </div>
     </div>
 
-    
-    <!--/ Paper video. -->
   </div>
 </section> 
 
-<!-- Methods -->
+<!-- Results -->
 <section class="section">
   <div class="container is-max-desktop">
     
-    <h2 class="title is-3" style="text-align: center;">Methods</h2>
+    <h2 class="title is-3" style="text-align: center;">Results</h2>
     <div class="columns is-centered">
     
 
@@ -301,6 +308,19 @@
           <h2 class="title is-3">Canvas</h2>
           <img src="./static/images/canvas_demo.png" 
           alt="Image of our Canvas Interface"/>
+
+          <p>
+            For our product, we utilize a canvas interface to introduce a creative artistic canvas for the user 
+            to freely define a framework for their desired image. Through this canvas, you can draw bounding boxes 
+            at desired locations and label the object whatever you want (e.g. a cat on the left). 
+            Moreover, you can define the desired background of this photo (e.g. on grass).
+            Lastly, you can also define the negative prompt - whatever you wish to not appear in the image. 
+
+            After pressing the <code>Save Input</code> button, this canvas will generate a <code>.json</code> file. 
+            This file can later be used to pass into the model. 
+
+            Unfortunately, given our time and technical constraints, we weren't able to host the canvas interface along with the model on one server. This is a future development!
+          </p>
         </div>
       </div>
 
@@ -323,17 +343,46 @@
     <!-- Animation. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
+        <h2 class="title is-3">Optimization</h2>
 
         <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
+        <h3 class="title is-4">Numerical Accuracy</h3>
         <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
+            <p> We generated 500 images with prompts "A realistic image of one cup", "A realistic image of five cups", and "A realistic image of ten cups". The model can generate accurate images when the task is relatively simple. However, as the task is more demanding, the model is more likely to create more objects than needed or have two objects merged together.</p>
+            <table>
+                <caption>Numerical Accuracy for Different Prompts</caption>
+                <tr>
+                    <th>r</th>
+                    <th>One Cup</th>
+                    <th>Five Cups</th>
+                    <th>Ten Cups</th>
+                </tr>
+                <tr>
+                    <td>0.75</td>
+                    <td>99.4%</td>
+                    <td>90.8%</td>
+                    <td>53.6%</td>
+                </tr>
+            </table>
         </div>
+
+        <!-- Interpolating. -->
+        <h3 class="title is-4">Image Quality</h3>
+        <div class="content has-text-justified">
+            <p> We generated 1000 images with fixed bounding boxes and varied frozen step ratio \(r\) for two prompts: "A realistic image of a dog" and "A realistic image of a flower".</p>
+            <img src="./static/images/canvas_demo.png" 
+            alt="Image of our Canvas Interface"/>
+        </div>
+
+        <!-- Numercial Accuracy Problems -->
+        <h3 class="title is-4">Numeracy Problems Analysis</h3>
+        <div class="content has-text-justified">
+            <p>We noticed two major causes to decrease numerical accuracy in generated images:</p>
+            <img src="./static/images/num_prob_1.png" />
+            <img src="./static/images/num_prob_2.png" />
+        </div>
+
+<!--         
         <div class="columns is-vcentered interpolation-panel">
           <div class="column is-3 has-text-centered">
             <img src="./static/images/interpolate_start.jpg"
@@ -355,13 +404,13 @@
                  alt="Interpolation end reference image."/>
             <p class="is-bold">End Frame</p>
           </div>
-        </div>
+        </div> -->
         <br/>
         <!--/ Interpolating. -->
 
         <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
+        <!-- <h3 class="title is-4">Re-rendering the input video</h3> -->
+        <!-- <div class="content has-text-justified">
           <p>
             Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
             viewpoint such as a stabilized camera by playing back the training deformations.
@@ -377,7 +426,7 @@
             <source src="./static/videos/replay.mp4"
                     type="video/mp4">
           </video>
-        </div>
+        </div> -->
         <!--/ Re-rendering. -->
 
       </div>
@@ -415,6 +464,7 @@
   </div>
 </section>
 
+<!-- Methods -->
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
