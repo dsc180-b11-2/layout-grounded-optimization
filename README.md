@@ -45,9 +45,9 @@ To generate images using your own text prompt, do the following in order.
 ```
 python generate.py --prompt-type demo --model gpt-4 --save-suffix "gpt-4" --repeats 5 --frozen_step_ratio 0.5 --regenerate 1 --force_run_ind 0 --run-model lmd_plus --no-scale-boxes-default --template_version v0.1
 ```
-Note that the version of GPT we used is GPT4. To use GPT3.5, replace ```prompts_demo_gpt4``` with ```prompts_demo_gpt3_5``` and ```cache/cache_demo_v0.1_gpt-4.json``` with ```cache/cache_demo_v0.1_gpt-3_5.json```. Then do the above steps.
+Note that the version of GPT we used is GPT4. To use GPT3.5, replace ```prompts_demo_gpt4``` with ```prompts_demo_gpt3_5```, ```cache/cache_demo_v0.1_gpt-4.json``` with ```cache/cache_demo_v0.1_gpt-3_5.json```, and the command line argument ```gpt-4``` with ```gpt-3.5```. Then do the above steps.
 
-You should find 5 iterations of generated images according to your canvas prompt in `img_generation`
+You should find 5 iterations of generated images according to your canvas prompt in `img_generation`.
 
 <details>
 Note: we set `--ignore-negative-prompt` in SD v1.5 so that SD generation does not depend on the LLM and follows a text-to-image generation baseline (otherwise we take the LLM-generated negative prompts and put them into the negative prompt). For other baselines, you can feel free to generate. Evaluation is similar to LMD+, except you need to change the image path in the evaluation command.
