@@ -214,23 +214,22 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Diffusion models have been shown as the state-of-the-art methods to generate 
-            realistic and diverse images based on text prompts, powering models like Stable Diffusion,
-             MidJourney and DALL·E. However, stable diffusion still often make mistakes regarding 
-             generating accurately according to numerical information and the object positions.
-              This work proposes a new method to solve the object position problem by letting 
-              users draw bounding boxes of objects to indicate their location, which to be used
-               as part of the input, besides providing text prompts only. Our model then utilizes
-                Layout-Grounded Stable Diffusion from 
-                <a href="https://llm-grounded-diffusion.github.io/">Lian et al.</a> as the backbone to
-                 solve the numeracy question so that the actual number of objects in the generated 
-                 image could match the number specified in the original text prompt. By composing 
-                 objects onto the positions specified by the user, our model can accurately generate
-                  images with numerical and positional information coherent with the text prompt. 
-                  Through our work, we identify the best coefficients for the above steps using Fréchet
-                   Inception Distance. In addition, our model also introduces more diverse and specific
-                    user input through integrating a canvas interface that supports specifying image 
-                    generation subject location, size and color.
+            Diffusion models have been shown as the state-of-the-art methods to generate realistic 
+            and diverse images based on text prompts, powering models like Stable Diffusion, MidJourney 
+            and DALL·E. However, stable diffusion still often make mistakes regarding generating accurately 
+            according to numerical information and the object positions. This work proposes a new method 
+            to solve the object position problem by letting users draw bounding boxes of objects 
+            to indicate their location, which to be used as part of the input, besides providing 
+            text prompts only. Our model then utilizes Layout-Grounded Stable Diffusion from 
+            <a href="https://llm-grounded-diffusion.github.io/">Lian et al.</a>  as the backbone to 
+            solve the numeracy question so that the actual number of objects in the generated image 
+            could match the number specified in the original text prompt. By composing objects 
+            onto the positions specified by the user, our model can accurately generate images 
+            with numerical and positional information coherent with the text prompt. Through our 
+            work, we identify the best coefficients for the above steps using Fréchet Inception 
+            Distance. In addition, our model also introduces more diverse and specific user 
+            input through integrating a canvas interface that supports specifying image generation 
+            subject location and size.
           </p>
         </div>
       </div>
