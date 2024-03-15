@@ -1,5 +1,7 @@
-# LLM-grounded Stable Diffusion Improvements
+# Beyond Text-to-Image: Layout-Grounded Stable Diffusion Optimization
 By: Jiatu Li, Wanting Mao, Zhengyun Nie, Jessica Song at UCSD
+
+[Report](https://arxiv.org/abs/2305.13655) | [Project Website](https://dsc180-b11-2.github.io/layout-grounded-optimization/) | [Poster](https://drive.google.com/file/d/1LxQnwsxSMfa9k9hL2L7ujU7k-nmTEof6/view) 
 
 In recent years, text-prompt image generation models like MidJourney, DALL·E, and ChatGPT have revolutionized the way we turn words into visuals, leveraging Stable Diffusion techniques to transform textual descriptions into intricate images. Despite their groundbreaking capabilities, these models face challenges in numerical accuracy, often failing to match the specific quantity of objects described in prompts. For instance, a request for an image depicting "five cats sitting around a table" might erroneously yield only three cats, highlighting a significant hurdle in achieving precise object count in generated images. 
 
