@@ -203,3 +203,15 @@ body {
   bottom: -40px;
   transform: translateX(-50%);
 }
+
+
+.grid-container {
+  display: inline-grid;
+}
+
+.gallery-image {
+  width: 200px; /* Set the width of each image */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 10px; /* Add spacing between images */
+  transition: transform 0.2s ease; 
+}

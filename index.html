@@ -128,6 +128,7 @@
   </div>
 </section>
 
+<!-- gallery -->
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
@@ -141,6 +142,56 @@
   </div>
 </section>
 
+<section>
+  <div class="container is-max-desktop">
+    <div class="image-container">
+      <div style="text-align: center; font-size: larger;color: black;margin-left: 230px;">
+        <p><b>Stable Diffusion XL</b></p>
+      </div>
+      <div style="text-align: center; font-size: larger;color: black;margin-left: 100px;">
+        <p><b>LMD</b></p>
+      </div>
+      <div style="text-align: center; font-size: larger;color: black;margin-left: 160px;">
+        <p><b>Ours</b></p>
+      </div>
+    </div>
+    <div class="image-container" style="margin-top: 5px;">
+      <img class = "gallery-image" src="static/images/man prompt.png" 
+      alt="A man holding a red bag in his left hand and a blue bag in his right hand.">
+      <img class = "gallery-image" src="static/images/man sdxl.pic.jpg" alt="Image by SDXL">
+      <img class = "gallery-image" src="static/images/man lmd.pic.jpg" alt="Image by LMD">
+      <img class = "gallery-image" src="static/images/man ours.pic.jpg" alt="Image by DUDE">
+      <!-- <img class = "gallery-image" src="static/images/placeholder.png" alt="place holder"> -->
+    </div>
+    <div class="image-container" style="margin-top: 20px;">
+      <img class = "gallery-image" src="static/images/cup prompt.png" 
+      alt="A realistic scene of five cups">
+      <img class = "gallery-image" src="static/images/cup SDXL.jpg" alt="Image by SDXL">
+      <img class = "gallery-image" src="static/images/cup lmd.jpg" alt="Image by LMD">
+      <img class = "gallery-image" src="static/images/cup ours.jpg" alt="Image by DUDE">
+      <!-- <img class = "gallery-image" src="static/images/placeholder.png" alt="place holder"> -->
+      <div style="text-align: center; margin-left: 50px;font-size: larger;color: black;">
+        <br><br><br><br><br><p><b>Prompt Inspiration</b></p>
+      </div>
+    </div>
+    <div class="image-container" style="margin-top: 20px;">
+      <img class = "gallery-image" src="static/images/milkmaid prompt.png" 
+      alt="Draw a Milkmaid in the middle of the image pouring milk into a cup on the table in a oil painting style">
+      <img class = "gallery-image" src="static/images/milkmaid SDXL.pic.jpg" alt="Image by SDXL">
+      <img class = "gallery-image" src="static/images/milkmaid lmd.pic.jpg" alt="Image by LMD">
+      <img class = "gallery-image" src="static/images/milkmaid ours.pic.jpg" alt="Image by DUDE">
+      <img class = "gallery-image" src="static/images/milkmaid target.pic.png" alt="Target Image">
+    </div>
+    <div class="image-container" style="margin-top: 20px;">
+      <img class = "gallery-image" src="static/images/waterpaint prompt.png" 
+      alt="Draw a mountain with green grass with clouds in the sky and a girl on the mountain, in watercolor.">
+      <img class = "gallery-image" src="static/images/waterpaint sdxl.pic.jpg" alt="Image by SDXL">
+      <img class = "gallery-image" src="static/images/waterpaint lmd.pic.jpg" alt="Image by LMD">
+      <img class = "gallery-image" src="static/images/waterpaint ours.pic.jpg" alt="Image by DUDE">
+      <img class = "gallery-image" src="static/images/waterpaint target.pic.png" alt="Target Image">
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -223,7 +274,7 @@
         <h3 class="title is-4">Numerical Accuracy</h3>
         <div class="content has-text-justified">
             <p> We generated 500 images with prompts "A realistic image of one cup", "A realistic image of five cups", and "A realistic image of ten cups". The model can generate accurate images when the task is relatively simple. However, as the task is more demanding, the model is more likely to create more objects than needed or have two objects merged together.</p>
-            <table>
+            <!-- <table>
               <caption style="font-style: italic;">Numerical Accuracy for Different Prompts</caption>
                 <tr>
                     <th>r</th>
@@ -243,7 +294,10 @@
                     <td><b><em>90.8%</em></b></td>
                     <td><b><em>53.6%</em></b></td>
                 </tr>
-            </table>
+            </table> -->
+            <figure>
+              <img src="./static/images/num acc barplot.png" alt = "Numerical Accuracy by Prompt"/>
+            </figure>
         </div>
         <div class="container is-max-desktop" style="margin-top: 40px;">
     
@@ -319,7 +373,7 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3" style="text-align: center;">Methods</h2>
 
-    <h3 class="title is-4">Background: Layout-grounded Stable Diffusion</h3>
+    <h3 class="title is-4" style="margin-top: 50px;">Background: Layout-grounded Stable Diffusion</h3>
     <div class="content has-text-justified">
         <p><strong><em>Layout-grounded Generative Model</em></strong>, by 
           <a href="https://llm-grounded-diffusion.github.io/">Lian et al.</a>, 
