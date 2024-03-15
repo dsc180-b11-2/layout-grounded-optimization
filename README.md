@@ -1,5 +1,5 @@
 # LLM-grounded Stable Diffusion Improvements
-By: Jiatu Li, Wanting Mao, Zhengyun Nie 最帅, Jessica Song
+By: Jiatu Li, Wanting Mao, Zhengyun Nie, Jessica Song at UCSD
 
 In recent years, text-prompt image generation models like MidJourney, DALL·E, and ChatGPT have revolutionized the way we turn words into visuals, leveraging Stable Diffusion techniques to transform textual descriptions into intricate images. Despite their groundbreaking capabilities, these models face challenges in numerical accuracy, often failing to match the specific quantity of objects described in prompts. For instance, a request for an image depicting "five cats sitting around a table" might erroneously yield only three cats, highlighting a significant hurdle in achieving precise object count in generated images. 
 
