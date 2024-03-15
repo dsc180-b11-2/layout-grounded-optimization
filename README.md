@@ -1,7 +1,7 @@
 # Beyond Text-to-Image: Layout-Grounded Stable Diffusion Optimization
 By: Jiatu Li, Wanting Mao, Zhengyun Nie, Jessica Song at UCSD
 
-[Report](https://arxiv.org/abs/2305.13655) | [Project Website](https://dsc180-b11-2.github.io/layout-grounded-optimization/) | [Poster](https://drive.google.com/file/d/1LxQnwsxSMfa9k9hL2L7ujU7k-nmTEof6/view) 
+[Report](https://drive.google.com/file/d/1Hgf7WEn9rQQm7cLeB3rkD-8Uq2jj4tNe/view) | [Project Website](https://dsc180-b11-2.github.io/layout-grounded-optimization/) | [Poster](https://drive.google.com/file/d/1LxQnwsxSMfa9k9hL2L7ujU7k-nmTEof6/view) 
 
 
 ![Main Image](https://dsc180-b11-2.github.io/layout-grounded-optimization/static/images/gallery.png)
