@@ -210,8 +210,31 @@ body {
 }
 
 .gallery-image {
-  width: 200px; /* Set the width of each image */
+  width: 180px; /* Set the width of each image */
   height: auto; /* Maintain aspect ratio */
   margin-right: 10px; /* Add spacing between images */
   transition: transform 0.2s ease; 
+}
+
+.hover-container {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-container img {
+  display: block;
+  width: 180px; /* Adjust the width as needed */
+  height: auto;
+  transition: transform 0.2s ease; 
+}
+
+.hover-container img.hover-image {
+  display: none; /* Initially hide the hover image */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.image-container:hover img.hover-image{
+  display: block; /* Show hover image on hover */
 }

@@ -48,7 +48,7 @@
             <span class="author-block">
               <a href="https://wantingmao01.github.io/">Wanting Mao<sup>1</sup></a>,</span>
             <span class="author-block">
-              <a >Zhengyun Nie<sup>1</sup></a>,
+              <a href="https://www.linkedin.com/in/%E6%AD%A3%E6%98%80-%E8%81%82-83b009242/">Zhengyun Nie<sup>1</sup></a>,
             </span>
             <span class="author-block">
               <a href="https://www.linkedin.com/in/jesswsong/">Jessica Song<sup>1</sup></a>
@@ -73,7 +73,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -129,38 +129,33 @@
 </section>
 
 <!-- gallery -->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img src="./static/images/gallery.png"
-                 class="gallery"
-                 alt="Comparison of DIL and previous methods"/>
-      <h2 class="subtitle has-text-centered">
-<span class="dnerf">Diffusion Image generation model based on Layout</span> offers precise control over object numeracy and location.
-      </h2>
-    </div>
-  </div>
-</section>
-
 <section>
   <div class="container is-max-desktop">
     <div class="image-container">
-      <div style="text-align: center; font-size: larger;color: black;margin-left: 230px;">
+      <div style="text-align: center; font-size: larger;color: black;margin-left: 200px;">
         <p><b>Stable Diffusion XL</b></p>
       </div>
-      <div style="text-align: center; font-size: larger;color: black;margin-left: 100px;">
+      <div style="text-align: center; font-size: larger;color: black;margin-left: 80px;">
         <p><b>LMD</b></p>
       </div>
-      <div style="text-align: center; font-size: larger;color: black;margin-left: 160px;">
+      <div style="text-align: center; font-size: larger;color: black;margin-left: 140px;">
         <p><b>Ours</b></p>
       </div>
+      <div style="text-align: center;font-size: small;margin-left: -110px;margin-top: 6px;">
+        <p><br>(Hover mouse to see our result)</p>
+      </div>
     </div>
-    <div class="image-container" style="margin-top: 5px;">
+    <div class="image-container" style="margin-top: 10px;">
       <img class = "gallery-image" src="static/images/man prompt.png" 
       alt="A man holding a red bag in his left hand and a blue bag in his right hand.">
       <img class = "gallery-image" src="static/images/man sdxl.pic.jpg" alt="Image by SDXL">
       <img class = "gallery-image" src="static/images/man lmd.pic.jpg" alt="Image by LMD">
-      <img class = "gallery-image" src="static/images/man ours.pic.jpg" alt="Image by DUDE">
+      <!-- hover -->
+      <div class="hover-container">
+        <img class="base-image" src="static/images/man box.pic.png" alt="Base Image" >
+        <img class="hover-image" src="static/images/man ours.pic.jpg" alt="Hover Image">
+      </div>
+      <!-- <img class = "gallery-image" src="static/images/man ours.pic.jpg" alt="Image by DUDE"> -->
       <!-- <img class = "gallery-image" src="static/images/placeholder.png" alt="place holder"> -->
     </div>
     <div class="image-container" style="margin-top: 20px;">
@@ -168,9 +163,14 @@
       alt="A realistic scene of five cups">
       <img class = "gallery-image" src="static/images/cup SDXL.jpg" alt="Image by SDXL">
       <img class = "gallery-image" src="static/images/cup lmd.jpg" alt="Image by LMD">
-      <img class = "gallery-image" src="static/images/cup ours.jpg" alt="Image by DUDE">
-      <!-- <img class = "gallery-image" src="static/images/placeholder.png" alt="place holder"> -->
-      <div style="text-align: center; margin-left: 50px;font-size: larger;color: black;">
+
+      <!-- hover -->
+      <div class="hover-container">
+        <img class="base-image" src="static/images/cup box.pic.png" alt="Base Image" >
+        <img class="hover-image" src="static/images/cup ours.jpg" alt="Hover Image">
+      </div>
+      <!-- <img class = "gallery-image" src="static/images/cup ours.jpg" alt="Image by DUDE"> -->
+      <div style="text-align: center; margin-left: 15px;font-size: larger;color: black;">
         <br><br><br><br><br><p><b>Prompt Inspiration</b></p>
       </div>
     </div>
@@ -179,21 +179,34 @@
       alt="Draw a Milkmaid in the middle of the image pouring milk into a cup on the table in a oil painting style">
       <img class = "gallery-image" src="static/images/milkmaid SDXL.pic.jpg" alt="Image by SDXL">
       <img class = "gallery-image" src="static/images/milkmaid lmd.pic.jpg" alt="Image by LMD">
-      <img class = "gallery-image" src="static/images/milkmaid ours.pic.jpg" alt="Image by DUDE">
-      <img class = "gallery-image" src="static/images/milkmaid target.pic.png" alt="Target Image">
+      <!-- hover -->
+      <div class="hover-container">
+        <img class="base-image" src="static/images/milkmaid box.pic.png" alt="Base Image" >
+        <img class="hover-image" src="static/images/milkmaid ours.pic.jpg" alt="Hover Image">
+      </div>
+      <!-- <img class = "gallery-image" src="static/images/milkmaid ours.pic.jpg" alt="Image by DUDE"> -->
+      <img class = "gallery-image" src="static/images/milkmaid target.png" alt="Target Image" style="margin-left: 10px;">
     </div>
     <div class="image-container" style="margin-top: 20px;">
       <img class = "gallery-image" src="static/images/waterpaint prompt.png" 
       alt="Draw a mountain with green grass with clouds in the sky and a girl on the mountain, in watercolor.">
       <img class = "gallery-image" src="static/images/waterpaint sdxl.pic.jpg" alt="Image by SDXL">
       <img class = "gallery-image" src="static/images/waterpaint lmd.pic.jpg" alt="Image by LMD">
-      <img class = "gallery-image" src="static/images/waterpaint ours.pic.jpg" alt="Image by DUDE">
-      <img class = "gallery-image" src="static/images/waterpaint target.pic.png" alt="Target Image">
+      <!-- hover -->
+      <div class="hover-container">
+        <img class="base-image" src="static/images/waterpaint box.pic.png" alt="Base Image" >
+        <img class="hover-image" src="static/images/waterpaint ours.pic.jpg" alt="Hover Image">
+      </div>
+      <!-- <img class = "gallery-image" src="static/images/waterpaint ours.pic.jpg" alt="Image by DUDE"> -->
+      <img class = "gallery-image" src="static/images/waterpaint target.pic.png" alt="Target Image" style="margin-left: 10px;">
     </div>
+    <h2 class="subtitle has-text-centered" style="margin-top: 20px;">
+      <span class="dnerf">Our Model</span> offers precise control over object numerical accuracy and spatial location.
+            </h2>
   </div>
 </section>
 
-<section class="section">
+<section class="section" style="margin-top: 40px;">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
@@ -436,7 +449,7 @@
     <h2 class="title">Acknowledgement</h2>
     <div style="background-color: #fafafa; padding: 20px;">
       <p>We would like to thank Professor Cloninger and Professor Saab for all the 
-        instructions in the past two quarters. Thanks to Professor Suraj for leading 
+        instructions in the past two quarters. Thanks to our beloved Suraj for leading 
         this wonderful capstone project, our TA Keng-Chi for his help. Last but not 
         least, thanks for the hard working DSMLP GPUs. 
       </p>
