@@ -7,9 +7,12 @@ By: Jiatu Li, Wanting Mao, Zhengyun Nie, Jessica Song at UCSD
 ![Main Image](https://dsc180-b11-2.github.io/layout-grounded-optimization/static/images/gallery.png)
 
 ## Getting Started
+We provide instructions to run our code in this section.
+
+## Installation
 You will need to download [VSCode](https://code.visualstudio.com/) and install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension to successfully host the Canvas interface. Please download VSCode and install Live Server according to links. 
 
-To run LMD successfully, please download the repository and run this in the command line:
+To run our model successfully, please download the repository and run this in the command line:
 ```
 pip install -r requirements.txt
 ```
