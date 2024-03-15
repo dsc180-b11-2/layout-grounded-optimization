@@ -49,10 +49,7 @@ Note that the version of GPT we used is GPT4. To use GPT3.5, replace ```prompts_
 
 You should find 5 iterations of generated images according to your canvas prompt in `img_generation`.
 
-<details>
-Note: we set `--ignore-negative-prompt` in SD v1.5 so that SD generation does not depend on the LLM and follows a text-to-image generation baseline (otherwise we take the LLM-generated negative prompts and put them into the negative prompt). For other baselines, you can feel free to generate. Evaluation is similar to LMD+, except you need to change the image path in the evaluation command.
-</details>
-
+To use Stable Diffusion XL as the baseline model instead of Stable Diffusion, add command line argument --sdxl at the end of the above command. To use different frozen step ratio, chnage 0.5 to any value between 0 and 1.
 
 ## Acknowledgements
 This repo uses code from [LLM-grounded Diffusion](https://github.com/TonyLianLong/LLM-groundedDiffusion), which extended [diffusers](https://huggingface.co/docs/diffusers/index), [GLIGEN](https://github.com/gligen/GLIGEN), and [layout-guidance](https://github.com/silent-chen/layout-guidance). This code also has an implementation of [boxdiff](https://github.com/showlab/BoxDiff) and [MultiDiffusion (region control)](https://github.com/omerbt/MultiDiffusion/tree/master). Using their code means adhering to their license.
