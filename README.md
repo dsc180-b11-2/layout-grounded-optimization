@@ -32,6 +32,9 @@ If you don't want any object to show up in the image, enter it in negative promp
 As our model is not currently live on a server, we are not able to support direct image generation yet. 
 The `Save Input` button should have generated a `data.json` file directly from the browser. Please move `data.json` to the `canvas_input` directory. 
 
+To generate images using your own text prompts, first open the file ```prompt.py``` and put your prompts in the list named ```prompts_demo_gpt4```. Then copy evrything in the variable ```templatev0_1``` at the start of the file and paste into GPT4's question box. Next, copy the answer given by GPT4 and paste it into the file ```cache/cache_demo_v0.1_gpt-4.json```, following the same format as the given key-value pairs.
+
+
 Then, to generate the iamge, run 
 ```
 python prompt_batch.py --prompt-type demo --model gpt-4 --auto-query --always-save --template_version v0.1
